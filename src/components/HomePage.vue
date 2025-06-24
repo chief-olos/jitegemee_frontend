@@ -8,21 +8,21 @@ import { vModelCheckbox } from 'vue';
   <!-- Rotating images -->
    <v-carousel>
   <v-carousel-item>
-   <v-img src="../../public/aswin-thomas-bony-SPO0ST4nVbY-unsplash.jpg"></v-img>
+   <v-img src="../../public/aswin-thomas-bony-SPO0ST4nVbY-unsplash.jpg" aspect ratio ="5"></v-img>
     cover
   </v-carousel-item>
 
   <v-carousel-item>
-   <v-img src="../../public/favicon.ico"></v-img>
+   <v-img src="public/photo-1606761568499-6d2451b23c66.avif" aspect ratio ="1"></v-img>
     cover
   </v-carousel-item>
 
   <v-carousel-item>
-   <v-img src="../../public/trnava-university-D1lV2CVmHbk-unsplash (1).jpg"></v-img>
+   <v-img src="../../public/trnava-university-D1lV2CVmHbk-unsplash (1).jpg" aspect ratio ="1"></v-img>
     cover
   </v-carousel-item>
   <v-carousel-item>
-   <v-img src="../../public/trnava-university-D1lV2CVmHbk-unsplash.jpg"></v-img>
+   <v-img src="../../public/trnava-university-D1lV2CVmHbk-unsplash.jpg" aspect ratio ="1"></v-img>
     cover
   </v-carousel-item>
 
@@ -88,13 +88,13 @@ So when you cheer for Jitegemee, you’re not just cheering for a team. You’re
 <v-container>
   <v-row>
     <v-col cols="12" md="2">
-       <img src="../../public/images/SAF-MAIN-LOGO-400x280 (1)"></img>
+       <img src="../../public/safaricom-logo-green.png"></img>
        </v-col>
        <v-col cols="12" md="2">
-       <img src="../../public/images/cio-e16924204108660.jpg"></img>
+       <img src="../../public/Logo.png"></img>
        </v-col>
        <v-col cols="12" md="2">
-       <img src="../../public/images/cio-e1692420410866"></img>
+       <img src="../../public/coop-bank-logo.png"></img>
        </v-col>
        
        </v-row>
