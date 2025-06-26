@@ -1,7 +1,7 @@
 <script setup>
 import {ref} from 'vue'
 import { useEventsStore } from '../stores/events'
-const eventsStore = useEventsStore()  //making the courses object accessible
+const eventsStore = useEventsStore()  
 const events= eventsStore.events
      
 </script>
