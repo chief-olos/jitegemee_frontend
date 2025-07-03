@@ -2,14 +2,16 @@
     import {ref} from 'vue'
 
     import { useLibraryStore } from '../stores/library'
-    const libraryStore = useLibraryStore() //making the studentLife store accessible
-    const Library= LibraryStore.student_life // linking to the student_life object in the store
+    const libraryStore = useLibraryStore() 
+    const library= libraryStore.library 
 </script>
 
 <template>
+    <h1> Library</h1>
+    
     <v-container>
         <v-row>
-            <v-col md="4" v-for = "item in student_life" :key="item">
+            <v-col md="4" v-for = "item in library" :key="item">
                 <v-card
                     class="mx-auto"
                     max-width="400"
@@ -29,7 +31,7 @@
                     </v-card-text>
 
                     <v-card-actions>
-                    <v-btn color="white" text="Read More"></v-btn>
+                    <v-btn color="white" text="View"></v-btn>
                     </v-card-actions>
                 </v-card>
             </v-col>

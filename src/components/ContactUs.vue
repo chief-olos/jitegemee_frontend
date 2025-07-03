@@ -9,7 +9,6 @@ const phoneNumber = defineModel('phoneNumber')
 const subject = defineModel('subject')
 const message = defineModel('message')
 
-
 //object to hold form data
 const applicationFormDetails = ref({
     firstName:firstName,
@@ -17,9 +16,7 @@ const applicationFormDetails = ref({
     emailAddress:emailAddress,
     phoneNumber:phoneNumber,
     subject:subject,
-    message:message,
-    course:selectedCourse
-
+    message:message  
 })
 
 //function to save data 
@@ -32,20 +29,20 @@ function saveData(){
 </script>
 
 <template>
+    <h1> Contact Us</h1>
     <!-- Apply form -->
     <v-container>
      
-        <!-- first name,  last name -->
+        <!-- first name, last name -->
         <v-row>
             <v-col md="6">
                 <v-text-field label="First Name" v-model="firstName"> </v-text-field>
             </v-col>
-           
             <v-col md="6">
                 <v-text-field label="Last Name" v-model="lastName"> </v-text-field>
             </v-col>
         </v-row>
-        <!-- email, phone number -->
+        <!-- email, phone -->
         <v-row>
             <v-col md="6">
                 <v-text-field label="Email Address" v-model="emailAddress"> </v-text-field>
@@ -53,21 +50,18 @@ function saveData(){
             <v-col md="6">
                 <v-text-field label="Phone Number" v-model="phoneNumber"> </v-text-field>
             </v-col>
-            
         </v-row>
         <!-- subject -->
          <v-row>
-            <v-col md="4">
+            <v-col>
                 <v-text-field label="Subject" v-model="subject"> </v-text-field>
             </v-col>
-            
         </v-row>
-        <!-- message -->
+         <!-- message -->
          <v-row>
-            <v-col md="4">
-                <v-text-field label="Message" v-model="message"> </v-text-field>
+            <v-col>
+                <v-textarea label="Message" v-model="message"> </v-textarea>
             </v-col>
-            
         </v-row>
         <v-row>
             <v-btn block color="primary" @click="saveData()" >Submit</v-btn>

@@ -5,34 +5,34 @@ export const useLibraryStore = defineStore('library',  {
     state: () => {
         const library = ref([
             {
-                id: 1,
-                title: "Computer Science:Learner's Book",
-                image: "",
-                description: "Modern Technology Computer Science:Learner's Book for comprehensive study",
+              id: 1,
+                title: "Computer Science: Learner's Book",
+                image: "/images/books/book1.jpeg",
+                description: "Modern Technology Computer Science: Learner's Book for comprehensive study",  
             },
             {
-                id: 2,
+                 id: 2,
                 title: "Mass Communication",
-                image: "",
-                description: "Essential Mass Communication",
+                image: "/images/books/book3.jpeg",
+                description: "Essential Mass COmmunication for convergencec culture and media literacy",
             },
             {
-                id: 3,
-                title: "",
-                image: "",
-                description: "",
+                 id: 3,
+                title: "Medicine and Surgery",
+                image: "/images/books/book5.jpeg",
+                description: "Medicine and Surgery: a concise texbook for comprehensive study",
             },
             {
                 id: 4,
-                title: "",
-                image: "",
-                description: "",
+                title: "Computer Science: Learner's Book",
+                image: "/images/books/book1.jpeg",
+                description: "Modern Technology Computer Science: Learner's Book for comprehensive study",
             },
             {
                 id: 5,
-                title: "",
-                image: "",
-                description: "",
+                title: "Medicine and Surgery",
+                image: "/images/books/book5.jpeg",
+                description: "Medicine and Surgery: a concise texbook for comprehensive study",
             },                                
         ])
 
