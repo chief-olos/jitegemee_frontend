@@ -7,23 +7,23 @@ import { vModelCheckbox } from 'vue';
 <template>
   <!-- Rotating images -->
    <v-carousel>
-  <v-carousel-item>
-   <v-img src="../../public/aswin-thomas-bony-SPO0ST4nVbY-unsplash.jpg" aspect ratio ="5"></v-img>
-    cover
+  <v-carousel-item
+    src="../../public/aswin-thomas-bony-SPO0ST4nVbY-unsplash.jpg" aspect ratio ="5">
+   
   </v-carousel-item>
 
-  <v-carousel-item>
-   <v-img src="public/photo-1606761568499-6d2451b23c66.avif" aspect ratio ="1"></v-img>
-    cover
+  <v-carousel-item
+ src="public/photo-1606761568499-6d2451b23c66.avif" aspect ratio ="1">
+    
   </v-carousel-item>
 
-  <v-carousel-item>
-   <v-img src="../../public/trnava-university-D1lV2CVmHbk-unsplash (1).jpg" aspect ratio ="1"></v-img>
-    cover
+  <v-carousel-item
+ src="../../public/trnava-university-D1lV2CVmHbk-unsplash (1).jpg" aspect ratio ="1">
+    
   </v-carousel-item>
-  <v-carousel-item>
-   <v-img src="../../public/trnava-university-D1lV2CVmHbk-unsplash.jpg" aspect ratio ="1"></v-img>
-    cover
+  <v-carousel-item
+    src="../../public/trnava-university-D1lV2CVmHbk-unsplash.jpg" aspect ratio ="1">
+   
   </v-carousel-item>
 
 </v-carousel>

@@ -1,14 +1,18 @@
 <script setup>
-    import {ref} from 'vue'
+    import {ref,onMounted} from 'vue'
 
     import { useLibraryStore } from '../stores/library'
     const libraryStore = useLibraryStore() 
     const library= libraryStore.library 
+    // Fetching the library items when the component is mounted
+    // This will call the fetchLibrary method defined in the store  
+    onMounted(() => {
+        libraryStore.fetchLibrary(); //fetching the library items from the API
+    });
+
 </script>
 
 <template>
-    <h1> Library</h1>
-    
     <v-container>
         <v-row>
             <v-col md="4" v-for = "item in library" :key="item">

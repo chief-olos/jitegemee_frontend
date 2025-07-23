@@ -7,7 +7,9 @@ import Events from '../components/Events.vue'
 import HomePage from '../components/HomePage.vue'
 import Library from '../components/Library.vue'
 import LogIn from '../components/LogIn.vue'
+import SignUp from '../components/SignUp.vue'
 import StudentLife from '../components/StudentLife.vue'
+import TheWelcome from '../components/TheWelcome.vue'
 
 
 const router = createRouter({
@@ -52,6 +54,16 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component:LogIn ,
+    },
+    {
+      path: '/thewelcome',
+      name: 'thewelcome',
+      component:TheWelcome,
+    },
+    {
+      path: '/signUp',
+      name: 'signup',
+      component:SignUp ,
     },
     {
       path: '/studentlife',

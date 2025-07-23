@@ -6,7 +6,8 @@
     const student_life= studentLifeStore.student_life // linking to the events object in the store
 </script>
 
-<template>   
+<template>
+    
     <v-container>
         <v-row>
             <v-col md="4" v-for = "item in student_life" :key="item">

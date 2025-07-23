@@ -1,94 +1,180 @@
-<script setup>
-import WelcomeItem from './WelcomeItem.vue'
-import DocumentationIcon from './icons/IconDocumentation.vue'
-import ToolingIcon from './icons/IconTooling.vue'
-import EcosystemIcon from './icons/IconEcosystem.vue'
-import CommunityIcon from './icons/IconCommunity.vue'
-import SupportIcon from './icons/IconSupport.vue'
+<template>
+  <v-container fluid class="welcome-background">
+    <v-row justify="center" align="center" class="pt-16">
+      <v-col cols="12" sm="10" md="8" lg="6">
+        <v-card class="welcome-card" elevation="10">
+          <!-- Welcome header -->
+          <v-card-title class="text-center teal darken-2 white--text py-4">
+            <h1 class="text-h3 font-weight-bold w-100">WELCOME TO JITEGEMEE</h1>
+          </v-card-title>
+          
+          <!-- User profile section -->
+          <v-card-text v-if="isAuthenticated" class="text-center py-8">
+            <v-avatar size="150" class="mb-4">
+              <v-img
+                :src="userPhotoUrl"
+                alt="User Photo"
+                cover
+              ></v-img>
+            </v-avatar>
+            
+            <div class="text-uppercase text-h4 font-weight-bold my-2">
+              {{ userName }}
+            </div>
+            
+            <div class="text-uppercase text-h6 font-weight-medium grey--text text--darken-1 mb-2">
+              {{ userEmail }}
+            </div>
+            
+            <div class="text-uppercase text-body-1 teal--text text--darken-2 font-weight-medium">
+              {{ userRole }}
+            </div>
+            
+            <v-divider class="my-6"></v-divider>
+            
+            <!-- Welcome message -->
+            <p class="text-body-1 text-center mx-auto" style="max-width: 80%;">
+              Thank you for joining Jitegemee School. We're excited to have you on board!
+              Explore our diverse courses, register, and enjoy a seamless learning experience.
+            </p>
+            
+            <!-- Action buttons -->
+            <v-row class="mt-8">
+              <v-col cols="12" sm="6" v-if="can('user')">
+                <v-btn
+                  block
+                  color="teal darken-1"
+                  dark
+                  large
+                  router
+                  to="/menu"
+                >
+                  <v-icon left>mdi-school</v-icon>
+                  Browse Menu
+                </v-btn>
+              </v-col>
+              
+              <v-col cols="12" sm="6" v-if="can('admin')">
+                <v-btn
+                  block
+                  outlined
+                  color="teal darken-1"
+                  large
+                  router
+                  to="/profile"
+                >
+                  <v-icon left>mdi-account-edit</v-icon>
+                  Edit Profile
+                </v-btn>
+              </v-col>
+            </v-row>
+          </v-card-text>
+          
+          <!-- Guest view -->
+          <v-card-text v-else class="text-center py-8">
+            <v-avatar size="150" class="mb-4">
+              <v-img
+                src="https://picsum.photos/1920/1080?random"
+                alt="Guest"
+                cover
+              ></v-img>
+            </v-avatar>
+            
+            <div class="text-h4 font-weight-bold my-2">
+              HELLO, GUEST
+            </div>
+            
+            <v-divider class="my-6"></v-divider>
+            
+            <!-- Welcome message for guests -->
+            <p class="text-body-1 text-center mx-auto" style="max-width: 80%;">
+              Welcome to Jitegemee School. Please log in or register to access our courses.
+            </p>
+            
+            <!-- Action buttons for guests -->
+            <v-row class="mt-8">
+              <v-col cols="12" sm="6">
+                <v-btn
+                  block
+                  color="teal darken-1"
+                  dark
+                  large
+                  router
+                  to="/login"
+                >
+                  <v-icon left>mdi-login</v-icon>
+                  Login
+                </v-btn>
+              </v-col>
+              
+              <v-col cols="12" sm="6">
+                <v-btn
+                  block
+                  outlined
+                  color="teal darken-1"
+                  large
+                  router
+                  to="/register"
+                >
+                  <v-icon left>mdi-account-plus</v-icon>
+                  Register
+                </v-btn>
+              </v-col>
+            </v-row>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
 
-const openReadmeInEditor = () => fetch('/__open-in-editor?file=README.md')
+<script setup>
+import { ref, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { useAuth } from '../services/auth_service'
+
+const router = useRouter()
+const { isAuthenticated, currentUser, loadUserInfo, can } = useAuth()
+
+const getImageUrl = (path) => `http://localhost:8000/storage/${path}`;
+
+// Load user data on component mount
+onMounted(async () => {
+  await loadUserInfo()
+})
+
+// Computed properties for user info
+const userName = computed(() => {
+  return currentUser.value?.name || 'GUEST USER'
+})
+
+const userEmail = computed(() => {
+  return currentUser.value?.email || 'guest@example.com'
+})
+
+const userRole = computed(() => {
+  return currentUser.value?.role?.name || 'Customer'
+})
+
+const userPhotoUrl = computed(() => {
+  if (currentUser.value?.user_photo) {
+    return `http://localhost:8000/storage/${currentUser.value.user_photo}`
+  } else {
+    return 'https://picsum.photos/1920/1080?random'
+  }
+})
 </script>
 
-<template>
-  <WelcomeItem>
-    <template #icon>
-      <DocumentationIcon />
-    </template>
-    <template #heading>Documentation</template>
+<style scoped>
+.welcome-background {
+  background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 50%, #80cbc4 100%);
+  min-height: 100vh;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
 
-    Vue’s
-    <a href="https://vuejs.org/" target="_blank" rel="noopener">official documentation</a>
-    provides you with all information you need to get started.
-  </WelcomeItem>
-
-  <WelcomeItem>
-    <template #icon>
-      <ToolingIcon />
-    </template>
-    <template #heading>Tooling</template>
-
-    This project is served and bundled with
-    <a href="https://vite.dev/guide/features.html" target="_blank" rel="noopener">Vite</a>. The
-    recommended IDE setup is
-    <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VSCode</a>
-    +
-    <a href="https://github.com/vuejs/language-tools" target="_blank" rel="noopener">Vue - Official</a>. If
-    you need to test your components and web pages, check out
-    <a href="https://vitest.dev/" target="_blank" rel="noopener">Vitest</a>
-    and
-    <a href="https://www.cypress.io/" target="_blank" rel="noopener">Cypress</a>
-    /
-    <a href="https://playwright.dev/" target="_blank" rel="noopener">Playwright</a>.
-
-    <br />
-
-    More instructions are available in
-    <a href="javascript:void(0)" @click="openReadmeInEditor"><code>README.md</code></a
-    >.
-  </WelcomeItem>
-
-  <WelcomeItem>
-    <template #icon>
-      <EcosystemIcon />
-    </template>
-    <template #heading>Ecosystem</template>
-
-    Get official tools and libraries for your project:
-    <a href="https://pinia.vuejs.org/" target="_blank" rel="noopener">Pinia</a>,
-    <a href="https://router.vuejs.org/" target="_blank" rel="noopener">Vue Router</a>,
-    <a href="https://test-utils.vuejs.org/" target="_blank" rel="noopener">Vue Test Utils</a>, and
-    <a href="https://github.com/vuejs/devtools" target="_blank" rel="noopener">Vue Dev Tools</a>. If
-    you need more resources, we suggest paying
-    <a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">Awesome Vue</a>
-    a visit.
-  </WelcomeItem>
-
-  <WelcomeItem>
-    <template #icon>
-      <CommunityIcon />
-    </template>
-    <template #heading>Community</template>
-
-    Got stuck? Ask your question on
-    <a href="https://chat.vuejs.org" target="_blank" rel="noopener">Vue Land</a>
-    (our official Discord server), or
-    <a href="https://stackoverflow.com/questions/tagged/vue.js" target="_blank" rel="noopener"
-      >StackOverflow</a
-    >. You should also follow the official
-    <a href="https://bsky.app/profile/vuejs.org" target="_blank" rel="noopener">@vuejs.org</a>
-    Bluesky account or the
-    <a href="https://x.com/vuejs" target="_blank" rel="noopener">@vuejs</a>
-    X account for latest news in the Vue world.
-  </WelcomeItem>
-
-  <WelcomeItem>
-    <template #icon>
-      <SupportIcon />
-    </template>
-    <template #heading>Support Vue</template>
-
-    As an independent project, Vue relies on community backing for its sustainability. You can help
-    us by
-    <a href="https://vuejs.org/sponsor/" target="_blank" rel="noopener">becoming a sponsor</a>.
-  </WelcomeItem>
-</template>
+.welcome-card {
+  border-radius: 16px;
+  overflow: hidden;
+}
+</style>

@@ -29,7 +29,6 @@ function saveData(){
 </script>
 
 <template>
-    <h1> Contact Us</h1>
     <!-- Apply form -->
     <v-container>
      
